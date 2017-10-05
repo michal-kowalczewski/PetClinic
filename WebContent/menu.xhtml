@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+</h:head>
+<h:body>
+<h:form>  
+    <p:growl id="messages"/>
+ 
+    <p:menubar>
+        <p:submenu label="Owner">
+            <p:menuitem value="Add new Owner" action="#" />
+            <p:menuitem value="Show all Owners" url="/Owner/owners.xhtml" />
+
+        </p:submenu>
+ 
+        <p:submenu label="Pet">
+            <p:menuitem value="Add new Pet" url="#"/>
+            <p:menuitem value="Show all Pets" url="/Pet/pets.xhtml"/>
+            <p:menuitem value="Find Pet by Owner" url="#"/>
+        </p:submenu>
+ 
+        <p:submenu label="Visit">
+            <p:menuitem value="Shedule a Visit" url="#" />
+            <p:menuitem value="Show all Visits" url="/Visit/visits.xhtml" />
+            <p:menuitem value="Vet Calendar" url="#" />
+        </p:submenu>
+ 
+        <p:submenu label="Vet">
+			<p:menuitem value="Add Vet" url="#" />
+			<p:menuitem value="Show all Vets" url="/Vet/vets.xhtml" />
+        </p:submenu>
+ 
+ 
+    </p:menubar>
+</h:form>
+
+</h:body>
+</html>
