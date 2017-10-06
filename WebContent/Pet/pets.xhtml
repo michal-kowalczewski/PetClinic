@@ -11,22 +11,24 @@
 </h:head>
 <h:body>
 	<ui:include src="../menu.xhtml" />
-	<p:dataTable var="car">
-		<p:column headerText="ID">
-			<h:outputText value="test" />
-		</p:column>
+	<p:panel header="All Pets">
+		<p:dataTable var="pet" value="#{displayPets.pets}">
+			<p:column headerText="ID">
+				<h:outputText value="#{pet.petId}" />
+			</p:column>
 
-		<p:column headerText="Name">
-			<h:outputText value="test" />
-		</p:column>
+			<p:column headerText="Name">
+				<h:outputText value="#{pet.petName}" />
+			</p:column>
 
-		<p:column headerText="Type">
-			<h:outputText value="test" />
-		</p:column>
+			<p:column headerText="Type">
+				<h:outputText value="#{pet.petType}" />
+			</p:column>
 
-		<p:column headerText="Owner Name">
-			<h:outputText value="test" />
-		</p:column>		
-	</p:dataTable>
+			<p:column headerText="Owner Name">
+				<h:outputText value="#{pet.petOwner}" />
+			</p:column>
+		</p:dataTable>
+	</p:panel>
 </h:body>
 </html>

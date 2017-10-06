@@ -6,11 +6,11 @@ public class Owner {
 	private String ownerLastName;
 	private String address;
 	private String city;
-	private int phone;
+	private Integer phone;
 	
 	public Owner() {}	
 	
-	public Owner(String ownerFirstName, String ownerLastName, String address, String city, int phone) {
+	public Owner(String ownerFirstName, String ownerLastName, String address, String city, Integer phone) {
 		this.ownerFirstName = ownerFirstName;
 		this.ownerLastName = ownerLastName;
 		this.address = address;
@@ -20,7 +20,7 @@ public class Owner {
 	
 	
 
-	public Owner(int ownerId, String ownerFirstName, String ownerLastName, String address, String city, int phone) {
+	public Owner(int ownerId, String ownerFirstName, String ownerLastName, String address, String city, Integer phone) {
 		this(ownerFirstName, ownerLastName, address, city, phone);
 		this.ownerId = ownerId;
 
@@ -56,10 +56,10 @@ public class Owner {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	public int getPhone() {
+	public Integer getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(Integer phone) {
 		this.phone = phone;
 	}
 	

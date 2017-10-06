@@ -11,26 +11,32 @@
 </h:head>
 <h:body>
 	<ui:include src="../menu.xhtml" />
-	<p:dataTable var="car">
-		<p:column headerText="ID">
-			<h:outputText value="test" />
-		</p:column>
+	<p:panel header="All Visits">
+		<p:dataTable var="visit" value="#{displayVisits.visits}">
+			<p:column headerText="ID">
+				<h:outputText value="#{visit.visitId}" />
+			</p:column>
 
-		<p:column headerText="Pet Name">
-			<h:outputText value="test" />
-		</p:column>
+			<p:column headerText="Pet Name">
+				<h:outputText value="#{visit.visitPetName}" />
+			</p:column>
 
-		<p:column headerText="Vet Name">
-			<h:outputText value="test" />
-		</p:column>
+			<p:column headerText="Pet Type">
+				<h:outputText value="#{visit.visitPetType}" />
+			</p:column>
 
-		<p:column headerText="Owner Name">
-			<h:outputText value="test" />
-		</p:column>
+			<p:column headerText="Vet Name">
+				<h:outputText value="#{visit.visitVet}" />
+			</p:column>
 
-		<p:column headerText="Date">
-			<h:outputText value="test" />
-		</p:column>
-	</p:dataTable>
+			<p:column headerText="Owner Name">
+				<h:outputText value="#{visit.visitPetOwner}" />
+			</p:column>
+
+			<p:column headerText="Date">
+				<h:outputText value="#{visit.visitDate}" />
+			</p:column>
+		</p:dataTable>
+	</p:panel>
 </h:body>
 </html>

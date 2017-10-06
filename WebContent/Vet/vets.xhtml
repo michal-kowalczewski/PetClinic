@@ -11,18 +11,20 @@
 </h:head>
 <h:body>
 	<ui:include src="../menu.xhtml" />
-	<p:dataTable var="car">
-		<p:column headerText="ID">
-			<h:outputText value="test" />
-		</p:column>
+	<p:panel header="All Vets">
+		<p:dataTable var="vet" value="#{displayVets.vets}">
+			<p:column headerText="ID">
+				<h:outputText value="#{vet.vetId}" />
+			</p:column>
 
-		<p:column headerText="First Name">
-			<h:outputText value="test" />
-		</p:column>
+			<p:column headerText="First Name">
+				<h:outputText value="#{vet.vetFirstName}" />
+			</p:column>
 
-		<p:column headerText="Last Name">
-			<h:outputText value="test" />
-		</p:column>
-	</p:dataTable>
+			<p:column headerText="Last Name">
+				<h:outputText value="#{vet.vetLastName}" />
+			</p:column>
+		</p:dataTable>
+	</p:panel>
 </h:body>
 </html>

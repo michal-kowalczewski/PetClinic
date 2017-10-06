@@ -11,30 +11,32 @@
 </h:head>
 <h:body>
 	<ui:include src="../menu.xhtml" />
-	<p:dataTable var="owner" value="#{displayOwners.owners}">
-		<p:column headerText="ID">
-			<h:outputText value="#{owner.ownerId}" />
-		</p:column>
+	<p:panel header="All Owners">
+		<p:dataTable var="owner" value="#{displayOwners.owners}">
+			<p:column headerText="ID">
+				<h:outputText value="#{owner.ownerId}" />
+			</p:column>
 
-		<p:column headerText="First Name">
-			<h:outputText value="#{owner.ownerFirstName}" />
-		</p:column>
+			<p:column headerText="First Name">
+				<h:outputText value="#{owner.ownerFirstName}" />
+			</p:column>
 
-		<p:column headerText="Last Name">
-			<h:outputText value="#{owner.ownerLastName}" />
-		</p:column>
+			<p:column headerText="Last Name">
+				<h:outputText value="#{owner.ownerLastName}" />
+			</p:column>
 
-		<p:column headerText="Address">
-			<h:outputText value="#{owner.address}" />
-		</p:column>
-		
-		<p:column headerText="City">
-			<h:outputText value="#{owner.city}" />
-		</p:column>
-		
-		<p:column headerText="Phone">
-			<h:outputText value="#{owner.phone}" />
-		</p:column>
-	</p:dataTable>
+			<p:column headerText="Address">
+				<h:outputText value="#{owner.address}" />
+			</p:column>
+
+			<p:column headerText="City">
+				<h:outputText value="#{owner.city}" />
+			</p:column>
+
+			<p:column headerText="Phone">
+				<h:outputText value="#{owner.phone}" />
+			</p:column>
+		</p:dataTable>
+	</p:panel>
 </h:body>
 </html>
