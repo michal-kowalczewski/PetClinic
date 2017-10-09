@@ -11,7 +11,7 @@
 </h:head>
 <h:body>
 	<ui:include src="../menu.xhtml" />
-	<h:form id="ownerpanel">
+	<h:form id="panel">
 		<p:panel header="New Owner">
 			<h:panelGrid columns="2" cellpadding="5">
 				<p:inputText id="firstname"
@@ -35,7 +35,7 @@
 				<p:watermark for="phone" value="Enter Owner Telephone No." />
 
 				<p:commandButton value="Add Owner"
-					action="#{displayOwners.addOwner}" update="ownergrowl" url="new_owner.xhtml"><f:ajax execute="@this" reRender="vetpanel"/>
+					action="#{displayOwners.addOwner}" update="growl" url="successful_insert.xhtml"><f:ajax execute="@this" reRender="vetpanel"/>
 				</p:commandButton>
 				
 				<script type="text/javascript">
@@ -50,7 +50,7 @@
 			</h:panelGrid>
 		</p:panel>
 	</h:form>
-	<p:growl id="ownergrowl" showDetail="true" sticky="true" />
+	<p:growl id="growl" showDetail="true" sticky="true" />
 </h:body>
 </html>
 

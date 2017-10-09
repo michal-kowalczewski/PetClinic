@@ -11,7 +11,7 @@
 </h:head>
 <h:body>
 	<ui:include src="../menu.xhtml" />
-	<h:form id="vetpanel">
+	<h:form id="panel">
 		<p:panel header="New Vet">
 			<h:panelGrid  columns="2" cellpadding="5">
 				<p:inputText id="firstname"
@@ -25,11 +25,10 @@
 				<p:watermark for="lastname" value="Enter Vet Last Name" />
 
 				<p:commandButton value="Add Vet"
-					action="#{displayVets.addVet}" update="vetgrowl"><f:ajax immediate="true" process="@form" reRender="vetpanel"/>
-					</p:commandButton>
+					action="#{displayVets.addVet}" update="vetgrowl"/>
 			</h:panelGrid>
 		</p:panel>
-		<p:growl id="vetgrowl" showDetail="true" sticky="true" />
+		<p:growl id="growl" showDetail="true" sticky="true" />
 	</h:form>
 
 </h:body>

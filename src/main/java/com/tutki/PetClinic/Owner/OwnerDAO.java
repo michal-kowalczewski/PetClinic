@@ -5,21 +5,51 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.faces.bean.ApplicationScoped;
+import javax.faces.bean.ManagedBean;
 
 import globalVariables.GrowlView;
 
+@ManagedBean(name="ownerDAO", eager = true)
+@ApplicationScoped
 public class OwnerDAO {
 	String url = "jdbc:sqlserver://localhost;databaseName=PetClinic;integratedSecurity=true;";
 	String sprawdzam = "sprawdzam";
 	Connection con = null;
 	Statement stmt = null;
 	ResultSet rs = null;
+	List<Owner> ownerList;
 	int updateSet;
+	
+	private static Map<Integer, Owner> ownerMap;
+	
+	public Owner find (Integer ownerId) {
+		return ownerMap.get(ownerId);
+	}
+	
+	public List<Owner> list(){
+		return new ArrayList<Owner>(ownerMap.values());
+	}
+	
+	public Map<Integer, Owner> getMap(){
+		return ownerMap;
+	}
+	
+	public void parseToMap() {
+		ownerMap = new LinkedHashMap<Integer, Owner>();
+		for(int i=0; ownerList.size()<i ; i++)
+		{
+			ownerMap.put(ownerList.get(i).getOwnerId(), ownerList.get(i));
+		}
+	}
 
 	public List<Owner> getAll(){
 		System.out.println(sprawdzam);
-		List<Owner> ownerList = new ArrayList<Owner>();
+		ownerList = new ArrayList<Owner>();
 		try{
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			con = DriverManager.getConnection(url);

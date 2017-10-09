@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	xmlns:of="http://omnifaces.org/functions">
+
+<h:head>
+</h:head>
+<h:body>
+	<ui:include src="../menu.xhtml" />
+	<h:form id="panel">
+		<p:panel header="New Pet">
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:inputText id="petname" value="#{displayPets.pet.petName}"
+					required="true" requiredMessage="Pet Name: can not be blank" />
+				<p:watermark for="petname" value="Enter Pet Name" />
+				<p:selectOneMenu id="petowner"
+					value="#{displayPets.displayOwners.owner.ownerId}" style="width:125px">
+					<f:selectItem itemLabel="Select Owner" itemValue="" />
+					<f:selectItems value="#{displayPets.displayOwners.owners}"
+						var="owner" itemLabel="#{owner.ownerFullName}"
+						itemValue="#{owner.ownerId}" />
+				</p:selectOneMenu>
+
+
+				<br />
+				<p:selectOneMenu id="pettype"
+					value="#{displayPets.displayTypes.type.typeId}" style="width:125px">
+					<f:selectItem itemLabel="Select Type" itemValue="" />
+					<f:selectItems value="#{displayPets.displayTypes.types}"
+						var="type" itemLabel="#{type.typeName}"
+						itemValue="#{type.typeId}" />
+				</p:selectOneMenu>
+				<br />
+				<p:commandButton value="Add Pet" action="#{displayPets.addPet}"
+					update="growl" />
+			</h:panelGrid>
+		</p:panel>
+		<p:growl id="growl" showDetail="true" sticky="true" />
+	</h:form>
+
+</h:body>
+</html>
+

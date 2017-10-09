@@ -1,9 +1,12 @@
 package com.tutki.PetClinic.Vet;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
@@ -27,10 +30,19 @@ public class DisplayVets {
 		return vet;
 	}
 	
-	public void addVet() {
+	public String addVet() {
 		vetDAO.insertVet(vet);
 		vet = new Vet();
-
+		ExternalContext ec = FacesContext.getCurrentInstance()
+		        .getExternalContext();
+		try {
+			ec.redirect(ec.getRequestContextPath()
+			        + "/Vet/new_vet.jsf");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	

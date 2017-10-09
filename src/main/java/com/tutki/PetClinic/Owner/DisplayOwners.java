@@ -1,12 +1,13 @@
 package com.tutki.PetClinic.Owner;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.application.ViewHandler;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.component.UIViewRoot;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+
 
 
 
@@ -18,12 +19,11 @@ public class DisplayOwners {
 	ArrayList<Owner> owners;
 
 	public List<Owner> getOwners() {
-
 		List<Owner> owners = new ArrayList<Owner>();
 		owners = ownerDAO.getAll();
 		return owners;
 	}
-	
+		
 	public void setOwner(String ownerFirstName, String ownerLastName, String address, String city, int phone) {
 		owner.setOwnerFirstName(ownerFirstName);
 		owner.setOwnerLastName(ownerLastName);
@@ -36,14 +36,22 @@ public class DisplayOwners {
 		return owner;
 	}
 	
-	public void addOwner() {
+	public String addOwner() {
 		ownerDAO.insertOwner(owner);
 		owner = new Owner();
-		FacesContext context = FacesContext.getCurrentInstance();
-		String viewId = context.getViewRoot().getViewId();
-		ViewHandler handler = context.getApplication().getViewHandler();
-		UIViewRoot root = handler.createView(context, viewId);
-		root.setViewId(viewId);
-		context.setViewRoot(root);
+		ExternalContext ec = FacesContext.getCurrentInstance()
+		        .getExternalContext();
+		try {
+			ec.redirect(ec.getRequestContextPath()
+			        + "/Owner/new_owner.jsf");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public int getOwnerId() {
+		return owner.getOwnerId();
 	}
 }
