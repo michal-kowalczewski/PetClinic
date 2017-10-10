@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class VisitDAO {
@@ -36,7 +39,7 @@ public class VisitDAO {
 			rs = stmt.executeQuery(query);
 			
 			while (rs.next()) {
-				Visit visit = new Visit(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
+				Visit visit = new Visit(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getTimestamp(6));
 				visitList.add(visit);
 			}
 		}
@@ -51,14 +54,18 @@ public class VisitDAO {
 		} 
 		return visitList;
 	}
-/*
-	public void insertUser(Pet owner){
+
+	public void insertVisit(Visit visit){
 		try{
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			con = DriverManager.getConnection(url);
+			Date date = visit.getVisitDate();
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+			String string = format.format(date);
+			Timestamp timestamp = Timestamp.valueOf(string);
 
-			String query = "Insert into Users(UserName, UserPassword, UserDescription) "
-					+ "VALUES ('" + owner.getOwnerFirstName() + "', '" + owner.getOwnerLastName() + "', '" + owner.getAddress() + "', '" + owner.getCity()+ "', '" + owner.getPhone()+ "');";
+			String query = "Insert into Visit(VisitPetID, VisitVetID, VisitDate) "
+					+ "VALUES ('" + visit.getVisitPetId() + "', '" + visit.getVisitVetId()+ "', '" + timestamp+ "');";
 			stmt = con.createStatement();
 			updateSet = stmt.executeUpdate(query);
 		}
@@ -70,5 +77,5 @@ public class VisitDAO {
 			if (stmt != null) try { stmt.close(); } catch(Exception e) {}  
 			if (con != null) try { con.close(); } catch(Exception e) {}  
 		} 
-	}*/
+	}
 }

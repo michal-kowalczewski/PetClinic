@@ -40,4 +40,8 @@ public class Vet {
 	public void setVetLastName(String vetLastName) {
 		this.vetLastName = vetLastName;
 	}	
+	
+	public String getVetFullName() {
+		return vetFirstName + " " + vetLastName;
+	}
 }

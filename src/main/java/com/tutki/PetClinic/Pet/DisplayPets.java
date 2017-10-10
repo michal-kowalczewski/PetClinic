@@ -1,13 +1,13 @@
 package com.tutki.PetClinic.Pet;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-
 import com.tutki.PetClinic.Owner.DisplayOwners;
 import com.tutki.PetClinic.Type.DisplayTypes;
 
@@ -17,9 +17,22 @@ public class DisplayPets {
 	private PetDAO petDAO = new PetDAO();
 	DisplayOwners displayOwners = new DisplayOwners();
 	DisplayTypes displayTypes = new DisplayTypes();
+	
 	Pet pet = new Pet();
 	ArrayList<Pet> pets;
+	List<Pet> ownerPets;
+
+
 	int ownerId;
+	HashMap<Integer, String> map = petDAO.getMap();
+
+	public int getPetId() {
+		return pet.getPetId();
+	}
+
+	public HashMap<Integer, String> getMap() {
+		return map;
+	}
 
 	public int getOwnerId() {
 		return ownerId;
@@ -34,6 +47,16 @@ public class DisplayPets {
 		pets = petDAO.getAll();
 		return pets;
 	}
+	
+	public List<Pet> getOwnerPets() {
+		List<Pet> ownerPets = new ArrayList<Pet>();
+		ownerPets = petDAO.getByOwner(3);
+		return ownerPets;
+	}
+
+	public void setOwnerPets(ArrayList<Pet> ownerPets) {
+		this.ownerPets = ownerPets;
+	}
 
 	public Pet getPet() {
 		return pet;
@@ -43,9 +66,8 @@ public class DisplayPets {
 		this.pet = pet;
 	}
 	
-	public String showValue() {
-		System.out.println("blabla");
-		return "test";
+	public void showValue() {
+		ownerPets = petDAO.getByOwner(pet.getPetId());
 	}
 	
 	public String addPet() {

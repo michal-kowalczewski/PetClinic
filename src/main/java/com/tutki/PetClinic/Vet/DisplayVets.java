@@ -14,6 +14,16 @@ public class DisplayVets {
 	private VetDAO vetDAO = new VetDAO();
 	Vet vet = new Vet();
 	ArrayList<Vet> pets;
+	
+	public void setVet(Vet vet) {
+		this.vet = vet;
+	}
+
+	int vetId;
+
+	public int getVetId() {
+		return vet.getVetId();
+	}
 
 	public List<Vet> getVets() {
 		List<Vet> vets = new ArrayList<Vet>();

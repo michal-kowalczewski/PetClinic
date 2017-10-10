@@ -1,6 +1,5 @@
 package com.tutki.PetClinic.Visit;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Visit {
@@ -9,11 +8,13 @@ public class Visit {
 	private String visitPetType;
 	private String visitPetOwner;
 	private String visitVet;
-	private String visitDate;
+	private Date visitDate;
+	private Integer visitPetId;
+	private Integer visitVetId;
 	
 	public Visit() {}
 	
-	public Visit(String visitPetName, String visitPetType, String visitPetOwner, String visitVet, String visitDate) {
+	public Visit(String visitPetName, String visitPetType, String visitPetOwner, String visitVet, Date visitDate) {
 		this.visitPetName = visitPetName;
 		this.visitPetType = visitPetType;
 		this.visitPetOwner = visitPetOwner;
@@ -21,13 +22,13 @@ public class Visit {
 		this.visitDate = visitDate;
 	}
 	
-	public Visit(int visitId, String visitPetName, String visitPetType, String visitPetOwner, String visitVet, String visitDate) {
+	public Visit(int visitId, String visitPetName, String visitPetType, String visitPetOwner, String visitVet, Date visitDate) {
 		this.visitId = visitId;	
 		this.visitPetName = visitPetName;
 		this.visitPetType = visitPetType;
 		this.visitPetOwner = visitPetOwner;
 		this.visitVet = visitVet;
-		this.visitDate = refactorDate(visitDate);
+		this.visitDate = visitDate;
 	}
 	
 	public int getVisitId() {
@@ -70,24 +71,41 @@ public class Visit {
 		this.visitVet = visitVet;
 	}
 
-	public String getVisitDate() {
+	public Date getVisitDate() {
 		return visitDate;
 	}
 
-	public void setVisitDate(String visitDate) {
+	public void setVisitDate(Date visitDate) {
 		this.visitDate = visitDate;
 	}
 	
-	private String refactorDate(String dateString) {
+	public Integer getVisitPetId() {
+		return visitPetId;
+	}
+
+	public void setVisitPetId(Integer visitPetId) {
+		this.visitPetId = visitPetId;
+	}
+
+	public Integer getVisitVetId() {
+		return visitVetId;
+	}
+
+	public void setVisitVetId(Integer visitVetId) {
+		this.visitVetId = visitVetId;
+	}
+	/*
+	private Date refactorDate(Date date) {
 		try {
-		Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").parse(dateString);
-		return dateString = new SimpleDateFormat("dd/MM/yy HH:mm").format(date);
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+		String string = format.format(date);
+		Date newDate = format.parse(string);
+		return newDate;
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
 		
-	}
-
+	}	*/
 }
