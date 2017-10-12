@@ -13,24 +13,31 @@
 <h:body>
 	<ui:include src="../menu.xhtml" />
 	<h:form id="panel">
-		<p:panel header="New Visit">
+		<p:panel header="New Pet">
 			<h:panelGrid columns="2" cellpadding="5">
-				<p:selectOneMenu id="ownerpet"
+				<p:inputText id="petname" value="#{displayPets.pet.petName}"
+					required="true" requiredMessage="Pet Name: can not be blank" />
+				<p:watermark for="petname" value="Enter Pet Name" />
+				<p:selectOneMenu id="petowner"
 					value="#{displayPets.displayOwners.owner.ownerId}" style="width:125px">
 					<f:selectItem itemLabel="Select Owner" itemValue="" />
-					<f:selectItems value="#{displayPets.displayOwners.owners}" var="owner"
-						itemLabel="#{owner.ownerFullName}" itemValue="#{owner.ownerId}" />
-					<f:ajax render="selected_owner" />
+					<f:selectItems value="#{displayPets.displayOwners.owners}"
+						var="owner" itemLabel="#{owner.ownerFullName}"
+						itemValue="#{owner.ownerId}" />
+				</p:selectOneMenu>
+
+
+				<br />
+				<p:selectOneMenu id="pettype"
+					value="#{displayPets.displayTypes.type.typeId}" style="width:125px">
+					<f:selectItem itemLabel="Select Type" itemValue="" />
+					<f:selectItems value="#{displayPets.displayTypes.types}"
+						var="type" itemLabel="#{type.typeName}"
+						itemValue="#{type.typeId}" />
 				</p:selectOneMenu>
 				<br />
-				<h:outputLabel for="selected_owner" value="Owner Name: " />
-				<h:outputText id="selected_owner"
-					value="#{displayVisits.displayPets.map[displayPets.displayOwners.owner.ownerId]}" />
-
-				<p:commandButton value="Add Visit"
-					action="#{displayVisits.addVisit}" update="growl" />
-					
-					
+				<p:commandButton value="Add Pet" action="#{displayPets.addPet}"
+					update="growl" />
 			</h:panelGrid>
 		</p:panel>
 		<p:growl id="growl" showDetail="true" sticky="true" />
@@ -38,4 +45,3 @@
 
 </h:body>
 </html>
-
