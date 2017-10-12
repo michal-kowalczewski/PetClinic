@@ -9,8 +9,6 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 
-
-
 @ManagedBean
 @SessionScoped
 public class DisplayOwners {
@@ -20,19 +18,7 @@ public class DisplayOwners {
 	public Owner owner = new Owner();
 	ArrayList<Owner> owners;
 
-	public List<Owner> getOwners() {
-		List<Owner> owners = new ArrayList<Owner>();
-		owners = ownerDAO.getAll();
-		return owners;
-	}
-		
-	public void setOwner(String ownerFirstName, String ownerLastName, String address, String city, int phone) {
-		owner.setOwnerFirstName(ownerFirstName);
-		owner.setOwnerLastName(ownerLastName);
-		owner.setAddress(address);
-		owner.setCity(city);
-		owner.setPhone(phone);
-	}
+
 	
 	public Owner getOwner() {
 		return owner;
@@ -40,6 +26,14 @@ public class DisplayOwners {
 	
 	public void setOwner(Owner owner) {
 		this.owner = owner;
+	}
+	
+	public void setOwner(String ownerFirstName, String ownerLastName, String address, String city, int phone) {
+		owner.setOwnerFirstName(ownerFirstName);
+		owner.setOwnerLastName(ownerLastName);
+		owner.setAddress(address);
+		owner.setCity(city);
+		owner.setPhone(phone);
 	}
 	
 	public String addOwner() {
@@ -57,10 +51,23 @@ public class DisplayOwners {
 		return null;
 	}
 	
+	public List<Owner> getOwners() {
+		List<Owner> owners = new ArrayList<Owner>();
+		owners = ownerDAO.getAll();
+		return owners;
+	}
+	
 	public int getOwnerId() {
 		return owner.getOwnerId();
 	}
 	public void setOwnerId(int i) {
 		this.owner.setOwnerId(i);
 	}
+
+	
+
+	
+
+	
+
 }

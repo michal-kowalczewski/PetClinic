@@ -26,57 +26,21 @@ public class DisplayPets {
 
 	int ownerId;
 	HashMap<Integer, String> map = petDAO.getMap();
-
-	public int getPetId() {
-		return pet.getPetId();
-	}
-
-	public HashMap<Integer, String> getMap() {
-		return map;
-	}
-
-	public int getOwnerId() {
-		return ownerId;
-	}
-
-	public void setOwnerId(int ownerId) {
-		this.ownerId = ownerId;
-	}
-
-	public List<Pet> getPets() {
-		List<Pet> pets = new ArrayList<Pet>();
-		pets = petDAO.getAll();
-		return pets;
+	
+	public DisplayOwners getDisplayOwners() {
+		return displayOwners;
 	}
 	
-	public List<Pet> getOwnerPets() {
-		System.out.println("wchodzi do metody");
-		List<Pet> ownerPets = new ArrayList<Pet>();
-		ownerPets = petDAO.getByOwner(displayOwners.owner.getOwnerId());
-		return ownerPets;
+	public DisplayTypes getDisplayTypes() {
+		return displayTypes;
 	}
 	
-	public List<Pet> go(Integer i) {
-		List<Pet> ownerPets = new ArrayList<Pet>();
-		ownerPets = petDAO.getByOwner(i);
-		return ownerPets;
-	}
-
-
-	public void setOwnerPets(ArrayList<Pet> ownerPets) {
-		this.ownerPets = ownerPets;
-	}
-
 	public Pet getPet() {
 		return pet;
 	}
 
 	public void setPet(Pet pet) {
 		this.pet = pet;
-	}
-	
-	public void showValue() {
-		ownerPets = petDAO.getByOwner(pet.getPetId());
 	}
 	
 	public String addPet() {
@@ -95,14 +59,53 @@ public class DisplayPets {
 		}
 		return null;
 	}
-
-	public DisplayOwners getDisplayOwners() {
-		return displayOwners;
+	
+	
+	public List<Pet> getPets() {
+		List<Pet> pets = new ArrayList<Pet>();
+		pets = petDAO.getAll();
+		return pets;
+	}
+	
+	public List<Pet> getOwnerPets() {
+		System.out.println("wchodzi do metody");
+		List<Pet> ownerPets = new ArrayList<Pet>();
+		System.out.println("Display Pets: " + displayOwners.owner.getOwnerId());
+		ownerPets = petDAO.getByOwner(displayOwners.owner.getOwnerId());
+		return ownerPets;
+	}
+	
+	public void setOwnerPets(ArrayList<Pet> ownerPets) {
+		this.ownerPets = ownerPets;
+	}
+	
+	public int getOwnerId() {
+		return ownerId;
 	}
 
-	public DisplayTypes getDisplayTypes() {
-		return displayTypes;
+	public void setOwnerId(int ownerId) {
+		this.ownerId = ownerId;
 	}
+
+	public int getPetId() {
+		return pet.getPetId();
+	}
+
+	public HashMap<Integer, String> getMap() {
+		return map;
+	}
+
+
+
+
+	
+
+	
+
+	
+
+
+
 
 	
 	

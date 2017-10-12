@@ -16,25 +16,29 @@ import com.tutki.PetClinic.Vet.DisplayVets;
 @SessionScoped
 public class DisplayVisits {
 	private VisitDAO visitDAO = new VisitDAO();
+	private DisplayPets displayPets= new DisplayPets();
+	private DisplayVets displayVets = new DisplayVets();
+	
+	Visit visit = new Visit();
+	ArrayList<Visit> visits;
+	ArrayList<Visit> visitsByVet;
+	
+	int petId, vetId;
+	
+	public DisplayPets getDisplayPets() {
+		return displayPets;
+	}
+
+	public DisplayVets getDisplayVets() {
+		return displayVets;
+	}
+	
 	public Visit getVisit() {
 		return visit;
 	}
 
 	public void setVisit(Visit visit) {
 		this.visit = visit;
-	}
-
-	DisplayPets displayPets= new DisplayPets();
-	DisplayVets displayVets = new DisplayVets();
-
-	Visit visit = new Visit();
-	ArrayList<Visit> visits;
-	int petId, vetId;
-
-	public List<Visit> getVisits() {
-		List<Visit> visits = new ArrayList<Visit>();
-		visits = visitDAO.getAll();
-		return visits;
 	}
 	
 	public String addVisit() {
@@ -55,6 +59,21 @@ public class DisplayVisits {
 		return null;
 	}
 	
+	public List<Visit> getVisits() {
+		List<Visit> visits = new ArrayList<Visit>();
+		visits = visitDAO.getAll();
+		return visits;
+	}
+	
+	
+	public List<Visit> getVisitsByVet() {
+		System.out.println("pobiera Visits wg Vetów");
+		List<Visit> visitsByVet = new ArrayList<Visit>();
+		System.out.println("Display Visits: "+displayVets.vet.getVetId());
+		visitsByVet = visitDAO.getVisitByVet(displayVets.vet.getVetId());
+		return visitsByVet;
+	}
+
 	public int getPetId() {
 		return petId;
 	}
@@ -71,13 +90,12 @@ public class DisplayVisits {
 		this.vetId = vetId;
 	}
 
-	public DisplayPets getDisplayPets() {
-		return displayPets;
-	}
 
-	public DisplayVets getDisplayVets() {
-		return displayVets;
-	}
+	
+
+
+
+
 
 	
 	

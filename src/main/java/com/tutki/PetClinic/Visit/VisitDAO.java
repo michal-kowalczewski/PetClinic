@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.tutki.PetClinic.Pet.Pet;
+
 public class VisitDAO {
 	String url = "jdbc:sqlserver://localhost;databaseName=PetClinic;integratedSecurity=true;";
 	String sprawdzam = "sprawdzam";
@@ -19,12 +21,6 @@ public class VisitDAO {
 	int updateSet;
 
 	public List<Visit> getAll(){
-		System.out.println(sprawdzam);
-		List<Visit> visitList = new ArrayList<Visit>();
-		try{
-			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con = DriverManager.getConnection(url);
-
 			String query = "SELECT VisitID, PetName, TypeName, Concat(OwnerFirstName,' ', OwnerLastName) as OwnerName, CONCAT(VetFirstName, ' ', VetLastName) as VetName, VisitDate\r\n" + 
 					"From Visit\r\n" + 
 					"Join Pet\r\n" + 
@@ -34,7 +30,35 @@ public class VisitDAO {
 					"JOIN Owner\r\n" + 
 					"On PetOwnerID = OwnerID\r\n" + 
 					"JOIN Vet\r\n" + 
-					"On VisitVetID = VetID;";
+					"On VisitVetID = VetID;";			
+		List<Visit> visitList = getFromQuery(query);
+		return visitList;
+	}
+	
+	public List<Visit> getVisitByVet(Integer vetId){
+		String query = "SELECT VisitID, PetName, TypeName, Concat(OwnerFirstName,' ', OwnerLastName) as OwnerName, CONCAT(VetFirstName, ' ', VetLastName) as VetName, VisitDate\r\n" + 
+				"From Visit\r\n" + 
+				"Join Pet\r\n" + 
+				"On VisitPetID = PetID\r\n" + 
+				"JOIN Type\r\n" + 
+				"On PetTypeId = TypeID\r\n" + 
+				"JOIN Owner\r\n" + 
+				"On PetOwnerID = OwnerID\r\n" + 
+				"JOIN Vet\r\n" + 
+				"On VisitVetID = VetID\r\n"
+				+ "WHERE VisitVetID = "+vetId;			
+	List<Visit> visitList = getFromQuery(query);
+	return visitList;
+}
+	
+	public List<Visit> getFromQuery(String queryToExecute){
+		System.out.println(sprawdzam);
+		List<Visit> visitList = new ArrayList<Visit>();
+		try{
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			con = DriverManager.getConnection(url);
+
+			String query = queryToExecute;
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(query);
 			
