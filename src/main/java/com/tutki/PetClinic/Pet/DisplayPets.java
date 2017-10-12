@@ -8,6 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+
 import com.tutki.PetClinic.Owner.DisplayOwners;
 import com.tutki.PetClinic.Type.DisplayTypes;
 
@@ -15,8 +16,8 @@ import com.tutki.PetClinic.Type.DisplayTypes;
 @SessionScoped
 public class DisplayPets {
 	private PetDAO petDAO = new PetDAO();
-	DisplayOwners displayOwners = new DisplayOwners();
-	DisplayTypes displayTypes = new DisplayTypes();
+	private DisplayOwners displayOwners = new DisplayOwners();
+	private DisplayTypes displayTypes = new DisplayTypes();
 	
 	Pet pet = new Pet();
 	ArrayList<Pet> pets;
@@ -49,10 +50,18 @@ public class DisplayPets {
 	}
 	
 	public List<Pet> getOwnerPets() {
+		System.out.println("wchodzi do metody");
 		List<Pet> ownerPets = new ArrayList<Pet>();
-		ownerPets = petDAO.getByOwner(3);
+		ownerPets = petDAO.getByOwner(displayOwners.owner.getOwnerId());
 		return ownerPets;
 	}
+	
+	public List<Pet> go(Integer i) {
+		List<Pet> ownerPets = new ArrayList<Pet>();
+		ownerPets = petDAO.getByOwner(i);
+		return ownerPets;
+	}
+
 
 	public void setOwnerPets(ArrayList<Pet> ownerPets) {
 		this.ownerPets = ownerPets;

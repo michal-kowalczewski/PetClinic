@@ -14,8 +14,10 @@ import javax.faces.context.FacesContext;
 @ManagedBean
 @SessionScoped
 public class DisplayOwners {
+
+
 	private OwnerDAO ownerDAO = new OwnerDAO();
-	Owner owner = new Owner();
+	public Owner owner = new Owner();
 	ArrayList<Owner> owners;
 
 	public List<Owner> getOwners() {
@@ -36,6 +38,10 @@ public class DisplayOwners {
 		return owner;
 	}
 	
+	public void setOwner(Owner owner) {
+		this.owner = owner;
+	}
+	
 	public String addOwner() {
 		ownerDAO.insertOwner(owner);
 		owner = new Owner();
@@ -53,5 +59,8 @@ public class DisplayOwners {
 	
 	public int getOwnerId() {
 		return owner.getOwnerId();
+	}
+	public void setOwnerId(int i) {
+		this.owner.setOwnerId(i);
 	}
 }
