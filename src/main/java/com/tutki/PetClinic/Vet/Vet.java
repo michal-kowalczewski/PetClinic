@@ -4,6 +4,7 @@ public class Vet {
 	private int vetId;
 	private String vetFirstName;
 	private String vetLastName;
+	private static int tempVetId; 
 	
 	public Vet() {}
 
@@ -18,11 +19,20 @@ public class Vet {
 	}
 
 	public int getVetId() {
+		System.out.println("GETTER");
+		System.out.println(" vetId: " + vetId);
+		System.out.println(" vetId: " + this.vetId);
+		System.out.println(" tempVetId: " + tempVetId);
 		return vetId;
 	}
 
 	public void setVetId(int vetId) {
+		tempVetId = vetId;
 		this.vetId = vetId;
+		System.out.println("SETTER");
+		System.out.println(" vetId: " + vetId);
+		System.out.println(" vetId: " + this.vetId);
+		System.out.println(" tempVetId: " + tempVetId);
 	}
 
 	public String getVetFirstName() {
@@ -44,4 +54,10 @@ public class Vet {
 	public String getVetFullName() {
 		return vetFirstName + " " + vetLastName;
 	}
+
+	public static int getTempVetId() {
+		return tempVetId;
+	}
+	
+	
 }

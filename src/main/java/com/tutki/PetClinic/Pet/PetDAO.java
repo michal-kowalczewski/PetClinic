@@ -14,7 +14,6 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name = "petDAO", eager = true)
 public class PetDAO {
 	String url = "jdbc:sqlserver://localhost;databaseName=PetClinic;integratedSecurity=true;";
-	String sprawdzam = "sprawdzam";
 	Connection con = null;
 	Statement stmt = null;
 	ResultSet rs = null;
@@ -42,7 +41,6 @@ public class PetDAO {
 	}	
 
 	public List<Pet> getFromQuery(String queryToExecute) {
-		System.out.println(sprawdzam);
 		List<Pet> petList = new ArrayList<Pet>();
 		try {
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

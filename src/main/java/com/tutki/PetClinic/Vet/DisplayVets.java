@@ -8,12 +8,17 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
+import com.tutki.PetClinic.Visit.Visit;
+import com.tutki.PetClinic.Visit.VisitDAO;
+
 @ManagedBean
 @SessionScoped
 public class DisplayVets {
 	private VetDAO vetDAO = new VetDAO();
+	private VisitDAO visitDAO = new VisitDAO();
 	public Vet vet = new Vet();
 	ArrayList<Vet> vets;
+	ArrayList<Visit> visitsByVet;
 	
 	int vetId;
 	
@@ -47,8 +52,15 @@ public class DisplayVets {
 	
 	public List<Vet> getVets() {
 		List<Vet> vets = new ArrayList<Vet>();
+		System.out.println("Display Vets : "+vet.getVetId());
 		vets = vetDAO.getAll();
 		return vets;
+	}
+	
+	public List<Visit> getVisitsByVets(){
+		System.out.println("Display Vets Visits : "+vet.getTempVetId());
+		System.out.println("Display Vets Visits : "+vet.getVetId());
+		return visitDAO.getVisitByVet(vet.getTempVetId());
 	}
 
 	public int getVetId() {

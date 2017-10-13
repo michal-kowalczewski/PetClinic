@@ -18,7 +18,6 @@ import globalVariables.GrowlView;
 @ApplicationScoped
 public class OwnerDAO {
 	String url = "jdbc:sqlserver://localhost;databaseName=PetClinic;integratedSecurity=true;";
-	String sprawdzam = "sprawdzam";
 	Connection con = null;
 	Statement stmt = null;
 	ResultSet rs = null;
@@ -48,7 +47,6 @@ public class OwnerDAO {
 	}
 
 	public List<Owner> getAll(){
-		System.out.println(sprawdzam);
 		ownerList = new ArrayList<Owner>();
 		try{
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

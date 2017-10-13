@@ -16,6 +16,7 @@ import org.primefaces.model.DefaultScheduleEvent;
 import org.primefaces.model.LazyScheduleModel;
 import org.primefaces.model.ScheduleModel;
 
+import com.tutki.PetClinic.Pet.DisplayPets;
 import com.tutki.PetClinic.Visit.DisplayVisits;
 import com.tutki.PetClinic.Visit.Visit;
 import com.tutki.PetClinic.Visit.VisitDAO;
@@ -27,6 +28,7 @@ public class VetSchedule implements Serializable {
     private ScheduleModel lazyEventModel;
     DisplayVets displayVets = new DisplayVets();
     DisplayVisits displayVisits = new DisplayVisits();
+    DisplayPets displayPets = new DisplayPets();
     VisitDAO visitDAO = new VisitDAO();
     Vet vet = new Vet();
  
@@ -38,17 +40,16 @@ public class VetSchedule implements Serializable {
     }
           
     public ScheduleModel getLazyEventModel() {
+
         lazyEventModel = new LazyScheduleModel() {        	
             @Override
             public void loadEvents(Date start, Date end) {
-                List<Visit> visits = getVisitsByVet();
+
                 System.out.println("jestem w loadEvents");
-                System.out.println("Vet Schedule: ");
+                List<Visit> visits = displayVets.getVisitsByVets();
                 for(int i=0; i<visits.size(); i++) {             	
                     addEvent(new DefaultScheduleEvent("Pet: "+visits.get(i).getVisitPetName()+ " Vet: "+visits.get(i).getVisitVet(), visits.get(i).getVisitDate(), addMinutes(visits.get(i).getVisitDate())));   
-                }
-                
-              
+                }           
             }   
         };
         return lazyEventModel;

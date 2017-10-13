@@ -12,14 +12,12 @@ import javax.faces.bean.ManagedBean;
 @ManagedBean(name="typeDAO", eager = true)
 public class TypeDAO {
 	String url = "jdbc:sqlserver://localhost;databaseName=PetClinic;integratedSecurity=true;";
-	String sprawdzam = "sprawdzam";
 	Connection con = null;
 	Statement stmt = null;
 	ResultSet rs = null;
 	int updateSet;
 
 	public List<Type> getAll(){
-		System.out.println("SPRAWDZAM TYPY");
 		List<Type> typeList = new ArrayList<Type>();
 		try{
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

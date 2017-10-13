@@ -14,7 +14,6 @@ import com.tutki.PetClinic.Pet.Pet;
 
 public class VisitDAO {
 	String url = "jdbc:sqlserver://localhost;databaseName=PetClinic;integratedSecurity=true;";
-	String sprawdzam = "sprawdzam";
 	Connection con = null;
 	Statement stmt = null;
 	ResultSet rs = null;
@@ -52,7 +51,6 @@ public class VisitDAO {
 }
 	
 	public List<Visit> getFromQuery(String queryToExecute){
-		System.out.println(sprawdzam);
 		List<Visit> visitList = new ArrayList<Visit>();
 		try{
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

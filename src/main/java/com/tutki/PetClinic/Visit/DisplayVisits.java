@@ -17,7 +17,7 @@ import com.tutki.PetClinic.Vet.DisplayVets;
 public class DisplayVisits {
 	private VisitDAO visitDAO = new VisitDAO();
 	private DisplayPets displayPets= new DisplayPets();
-	private DisplayVets displayVets = new DisplayVets();
+	public DisplayVets displayVets = new DisplayVets();
 	
 	Visit visit = new Visit();
 	ArrayList<Visit> visits;
@@ -61,6 +61,7 @@ public class DisplayVisits {
 	
 	public List<Visit> getVisits() {
 		List<Visit> visits = new ArrayList<Visit>();
+		System.out.println("Display Visits : "+displayVets.vet.getVetId());
 		visits = visitDAO.getAll();
 		return visits;
 	}
@@ -69,7 +70,7 @@ public class DisplayVisits {
 	public List<Visit> getVisitsByVet() {
 		System.out.println("pobiera Visits wg Vetów");
 		List<Visit> visitsByVet = new ArrayList<Visit>();
-		System.out.println("Display Visits: "+displayVets.vet.getVetId());
+		System.out.println("Display Visits : "+displayVets.vet.getVetId());
 		visitsByVet = visitDAO.getVisitByVet(displayVets.vet.getVetId());
 		return visitsByVet;
 	}

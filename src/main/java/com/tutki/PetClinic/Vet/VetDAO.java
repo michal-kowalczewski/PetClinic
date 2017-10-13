@@ -9,14 +9,12 @@ import java.util.List;
 
 public class VetDAO {
 	String url = "jdbc:sqlserver://localhost;databaseName=PetClinic;integratedSecurity=true;";
-	String sprawdzam = "sprawdzam";
 	Connection con = null;
 	Statement stmt = null;
 	ResultSet rs = null;
 	int updateSet;
 
 	public List<Vet> getAll(){
-		System.out.println(sprawdzam);
 		List<Vet> vetList = new ArrayList<Vet>();
 		try{
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

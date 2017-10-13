@@ -11,13 +11,15 @@ import javax.faces.context.FacesContext;
 
 import com.tutki.PetClinic.Owner.DisplayOwners;
 import com.tutki.PetClinic.Type.DisplayTypes;
+import com.tutki.PetClinic.Vet.DisplayVets;
 
 @ManagedBean
 @SessionScoped
 public class DisplayPets {
 	private PetDAO petDAO = new PetDAO();
-	private DisplayOwners displayOwners = new DisplayOwners();
+	public DisplayOwners displayOwners = new DisplayOwners();
 	private DisplayTypes displayTypes = new DisplayTypes();
+	public DisplayVets displayVets = new DisplayVets();
 	
 	Pet pet = new Pet();
 	ArrayList<Pet> pets;
@@ -29,6 +31,10 @@ public class DisplayPets {
 	
 	public DisplayOwners getDisplayOwners() {
 		return displayOwners;
+	}
+	
+	public DisplayOwners setDisplayOwners(DisplayOwners displayOwners) {
+		return this.displayOwners = displayOwners;
 	}
 	
 	public DisplayTypes getDisplayTypes() {
