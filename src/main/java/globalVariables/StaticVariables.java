@@ -1,4 +1,4 @@
-package globalVariables;
+package globalvariables;
 
 public class StaticVariables {
 	public static String url = "jdbc:sqlserver://localhost;databaseName=PetClinic;user=MyUserName;password=*****;";

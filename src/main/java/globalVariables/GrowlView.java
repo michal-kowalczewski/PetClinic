@@ -1,4 +1,4 @@
-package globalVariables;
+package globalvariables;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
